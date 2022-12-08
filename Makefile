@@ -18,4 +18,13 @@ migratedown:
 sqlc:
 	sqlc generate
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc
+test:
+	go test -v -cover ./...
+
+startdb:
+	docker start postgres
+
+stopdb:
+	docker stop postgres
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test startdb stopdb
